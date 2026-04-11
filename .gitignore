@@ -1,0 +1,21 @@
+# .NET / C#
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.log
+appsettings.Development.json
+
+# Angular / Node
+node_modules/
+dist/
+.angular/
+.env
+
+# Docker
+postgres_data/
+
+# Sistema
+.DS_Store
+Thumbs.db
