@@ -1,10 +1,9 @@
-version: '3.8'
-
 services:
-  # Banco de dados
+
   postgres:
-    image: postgres:16
+    image: postgres:16-alpine
     container_name: korp_postgres
+    platform: linux/amd64
     environment:
       POSTGRES_USER: korp
       POSTGRES_PASSWORD: korp123
@@ -20,7 +19,6 @@ services:
       timeout: 5s
       retries: 5
 
-  # Microsserviço de Estoque
   servico-estoque:
     build: ./servico-estoque/ServicoEstoque
     container_name: korp_estoque
@@ -29,12 +27,11 @@ services:
       - ASPNETCORE_URLS=http://+:8081
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - "8081:8081"
+      - "8083:8081"
     depends_on:
       postgres:
         condition: service_healthy
 
-  # Microsserviço de Faturamento
   servico-faturamento:
     build: ./servico-faturamento/ServicoFaturamento
     container_name: korp_faturamento
@@ -50,6 +47,17 @@ services:
         condition: service_healthy
       servico-estoque:
         condition: service_started
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: korp_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
 
 volumes:
   postgres_data:
