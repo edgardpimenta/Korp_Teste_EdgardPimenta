@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const API = 'http://localhost:8082';
+const API = 'http://localhost:5182';
 
 @Injectable({ providedIn: 'root' })
 export class FaturamentoService {
