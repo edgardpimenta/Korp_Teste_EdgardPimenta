@@ -1,11 +1,12 @@
 import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
+  imports: [RouterOutlet],
   templateUrl: './app.html',
-  standalone: false,
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('korp-frontend');
+  protected readonly title = signal('nfe-frontend');
 }

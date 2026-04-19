@@ -6,18 +6,11 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "korp-frontend": {
+    "nfe-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss",
-          "standalone": false
-        },
-        "@schematics/angular:directive": {
-          "standalone": false
-        },
-        "@schematics/angular:pipe": {
-          "standalone": false
+          "style": "scss"
         }
       },
       "root": "",
@@ -37,9 +30,7 @@
               }
             ],
             "styles": [
-  "node_modules/bootstrap/dist/css/bootstrap.min.css",
-  "src/styles.scss"
-],
+              "src/styles.scss"
             ]
           },
           "configurations": {
@@ -70,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "korp-frontend:build:production"
+              "buildTarget": "nfe-frontend:build:production"
             },
             "development": {
-              "buildTarget": "korp-frontend:build:development"
+              "buildTarget": "nfe-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
